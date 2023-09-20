@@ -17,12 +17,13 @@ export class SearchResultsComponent implements OnChanges {
 
   ngOnChanges() {
     this._moviesService.getMovies(this.query, this.page).subscribe(data => {
-      console.log(data)
       this.results = []
       const movies = data.Search
-      for (let movie of movies) {
-        delete movie.imdbID
-        this.results.push(movie)
+      if (movies) {
+        for (let movie of movies) {
+          delete movie.imdbID
+          this.results.push(movie)
+        }
       }
       console.log('results', this.results)
     })
