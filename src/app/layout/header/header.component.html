@@ -1,1 +1,11 @@
-<p>header works!</p>
+<div class="bg-zinc-800 flex row items-center h-24 p-5 justify-between">
+    <img src="/assets/logo.svg" alt="Favs Movies" class="h-full mr-12">
+    <div class="search-bar w-8/12 mr-10">
+        <app-input-search (querySearch)="handleQuerySearch($event)"/>
+    </div>
+    <nav class="menu">
+        <ul>
+            <li class="menu-item">Favorites</li>
+        </ul>
+    </nav>
+</div>

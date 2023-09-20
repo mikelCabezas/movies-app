@@ -4,10 +4,17 @@
 
 html,
 body {
-    height: 100%;
+    @apply h-full
 }
 
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    @apply m-0 bg-zinc-700 text-zinc-100
+}
+
+.filled {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
 }

@@ -1,0 +1,45 @@
+<div *ngIf="results.length > 0" class="results w-full flex justify-center mt-6">
+    <div class="relative overflow-x-auto w-10/12">
+        <table class="w-full text-sm text-left text-zinc-500 dark:text-zinc-400">
+            <thead class="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-900 dark:text-zinc-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Image
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Title
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Type
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Year
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Favorite
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of results; let i = index" class="bg-white border-b dark:bg-zinc-800 dark:border-zinc-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-zinc-900 whitespace-nowrap dark:text-white">
+                        <img src="{{result.Poster}}" alt="{{result.Title}}" class=" w-16">
+                    </th>
+                    <td class="px-6 py-4">
+                    <p class="text-lg text-zinc-50/90 font-bold">{{result.Title}}</p>
+                    </td>
+                    <td class="px-6 py-4">
+                        {{result.Type}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{result.Year}}
+                    </td>
+                    <td class="px-6 py-4">
+                        <span class="material-symbols-rounded filled text-red-500 cursor-pointer" (click)="addToFavs(result)">favorite</span>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
