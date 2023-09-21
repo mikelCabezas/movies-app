@@ -1,6 +1,6 @@
 <header class="bg-zinc-800 w-full flex flex-row items-center justify-center">
     <div class="container h-28 p-5 flex flex-row items-center justify-between">
-        <img src="/assets/logo.svg" alt="Favs Movies" class="h-full mr-12">
+        <img (click)="handleGoToHome()" src="/assets/logo.svg" alt="Favs Movies" class="h-full mr-12 cursor-pointer">
         <nav class="menu mr-12">
             <ul class="flex flex-row gap-3">
                 <li 
@@ -12,7 +12,7 @@
             </ul>
         </nav>
         <div class="search-bar flex-1 mr-10z">
-            <app-input-search (querySearch)="handleQuerySearch($event)"/>
+            <app-input-search/>
         </div>
     </div>
 </header>

@@ -1,0 +1,71 @@
+
+<div class=" flex flex-col justify-center">
+    <h2 class="text-4xl text-center font-bold mt-6">Best series</h2>
+    <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto justify-center w-3/4">
+        <div class="w-full"  *ngFor="let movie of bestSeries; let i = index">
+            <div class="max-w-sm bg-zinc-800 px-0 pt-0 pb-2 rounded-xl transform hover:scale-[1.02] transition duration-500">
+                <div class="relative top-card">
+                    <span (click)="toggleToFavs(movie)"
+                        class="material-symbols-rounded absolute top-2 right-3 text-red-500 cursor-pointer" 
+                        [ngClass]="{'filled' : checkFav(movie.imdbID)}" 
+                    >
+                        favorite
+                    </span>
+
+                    <img class="w-full aspect-[3/4] object-cover rounded-t-lg" [ngClass]="{'bg-red-800/50' : movie.Poster === 'N/A' }" src="{{movie.Poster !== 'N/A' ? movie.Poster : '/assets/no-image-preview.webp'}}" alt="Colors">
+                    <p class="absolute top-2 left-2 bg-red-600 text-zinc-100 font-semibold py-1 px-3 rounded-lg">{{movie.Type}}</p>
+                </div>
+                <div class="content px-4">
+                    <h1 class="mt-4 text-zinc-200 text-lg font-bold cursor-pointer">{{movie.Title}}</h1>
+                    <div class="my-1">
+                        <!-- <div class="flex space-x-1 items-center">
+                            <p>{{movie.Type}}</p>
+                        </div> -->
+                        <div class="flex space-x-1 items-center">
+                            <p>{{movie.Year}}</p>
+                        </div>
+                        <div *ngIf="movie.description" class="flex space-x-1 items-center">
+                            <p>{{movie.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class=" flex flex-col justify-center">
+    <h2 class="text-4xl text-center font-bold mt-6">Most viewed</h2>
+    <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto justify-center w-3/4">
+        <div class="w-full" *ngFor="let movie of mostWatched; let i = index">
+            <div class="max-w-sm bg-zinc-800 px-0 pt-0 pb-2 rounded-xl transform hover:scale-[1.02] transition duration-500">
+                <div class="relative top-card">
+                    <span (click)="toggleToFavs(movie)"
+                        class="material-symbols-rounded absolute top-2 right-3 text-red-500 cursor-pointer" 
+                        [ngClass]="{'filled' : checkFav(movie.imdbID)}" 
+                    >
+                        favorite
+                    </span>
+                    <img class="w-full aspect-[3/4] object-cover rounded-t-lg" [ngClass]="{'bg-red-800/50' : movie.Poster === 'N/A' }" src="{{movie.Poster !== 'N/A' ? movie.Poster : '/assets/no-image-preview.webp'}}" alt="Colors">
+                    <p class="absolute top-2 left-2 bg-red-600 text-zinc-100 font-semibold py-1 px-3 rounded-lg">{{movie.Type}}</p>
+                </div>
+                <div class="content px-4">
+                    <h1 class="mt-4 text-zinc-200 text-lg font-bold cursor-pointer">{{movie.Title}}</h1>
+                    <div class="my-1">
+                        <!-- <div class="flex space-x-1 items-center">
+                            <p>{{movie.Type}}</p>
+                        </div> -->
+                        <div class="flex space-x-1 items-center">
+                            <p>{{movie.Year}}</p>
+                        </div>
+                        <div *ngIf="movie.description" class="flex space-x-1 items-center">
+                            <p>{{movie.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    

@@ -1,8 +1,8 @@
 <app-edit-favorite *ngIf="onEditModal" (updateFavorite)="updateFavorite($event)" (cancelUpdateFavorite)="cancelUpdateFavorite()" [postIndex]="getPostIndex()"/>
-<div class="md:px-4 flex flex-row w-full gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto">
-    <div class="px-0 pt-0 pb-2 rounded-xl flex flex-wrap flex-row">
+<div class="md:px-4 flex flex-row w-full gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto  ">
+    <div class="px-0 pt-0 pb-2 rounded-xl flex  flex-row">
         <div class="flex flex-wrap flex-row">
-            <p class="w-full">Types</p>
+            <p class="w-full font-bold mb-2">Types</p>
             <ul class="flex flex-wrap flex-row">
                 <li *ngFor="let type of types; let i = index" 
                 [ngClass]="{'bg-red-600' : filteredTypeItems.includes(type)}"
@@ -13,7 +13,7 @@
             </ul>
         </div>
         <div class="flex flex-wrap flex-row">
-            <p class="w-full">Years</p>
+            <p class="w-full font-bold mb-2">Years</p>
             <ul class="flex flex-wrap flex-row">
                 <li *ngFor="let year of years; let i = index" 
                     [ngClass]="{'bg-red-600' : filteredYearItems.includes(year)}"
@@ -26,10 +26,12 @@
         </div>
     </div>
 </div>
+<div class="container mt-4 mx-auto p-4" *ngIf="results.length === 0">
+    <h2 class="text-xl text-x">No results found with this filter</h2>
+</div>
 <div *ngIf="results.length > 0" class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto">
-    <ng-container *ngIf="results.length === 0">
-        <p>No results found with this filter</p>
-    </ng-container>
+
+
         <ng-container *ngFor="let favorite of results; let i = index">
         <ng-container *ngIf="filteredTypeItems.length === 0 || filteredTypeItems.includes(favorite.Type)">
             

@@ -14,6 +14,7 @@ import { FavoritesPageComponent } from './pages/favorites/favorites.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { EditFavoriteComponent } from './components/edit-favorite/edit-favorite.component';
 import { ResultsComponent } from './pages/results/results.component';
+import { FeaturedComponent } from './components/featured/featured.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ResultsComponent } from './pages/results/results.component';
     FavoritesComponent,
     FavoritesPageComponent,
     EditFavoriteComponent,
-    ResultsComponent
+    ResultsComponent,
+    FeaturedComponent
   ],
   imports: [
     BrowserModule,

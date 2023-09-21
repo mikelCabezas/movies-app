@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-input-search',
@@ -6,9 +7,13 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./input-search.component.css']
 })
 export class InputSearchComponent {
-  @Output() querySearch = new EventEmitter<any>()
+
+  constructor(private router: Router) { }
   query = ''
   searchResults() {
-    this.querySearch.emit(this.query)
+    this.router.navigateByUrl('/', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate(['/results', this.query])
+      })
   }
 }
