@@ -10,6 +10,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InputSearchComponent } from './components/input-search/input-search.component';
+import { FavoritesPageComponent } from './pages/favorites/favorites.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { EditFavoriteComponent } from './components/edit-favorite/edit-favorite.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { InputSearchComponent } from './components/input-search/input-search.com
     HomeComponent,
     SearchResultsComponent,
     InputSearchComponent,
+    FavoritesComponent,
+    FavoritesPageComponent,
+    EditFavoriteComponent
   ],
   imports: [
     BrowserModule,

@@ -16,5 +16,18 @@ body {
         'FILL' 1,
         'wght' 400,
         'GRAD' 0,
-        'opsz' 48
+        'opsz' 48 !important
+}
+
+.container {
+    @apply transition-all
+}
+
+.top-card::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, 0) 16%);
+    height: 100%;
 }

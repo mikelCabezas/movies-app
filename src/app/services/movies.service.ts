@@ -13,7 +13,6 @@ export class MoviesService {
 
   getMovies(query: string, page: number): Observable<any> {
     const URL = `${this.url}s=${query}&page=${page}`
-    console.log(URL)
     return this.http.get(URL)
   }
 }

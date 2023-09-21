@@ -1,32 +1,22 @@
 <div *ngIf="results.length > 0" class="results w-full flex justify-center mt-6">
-    <div class="relative overflow-x-auto w-10/12">
+    <div class="relative overflow-x-auto w-10/12 mb-6">
         <table class="w-full text-sm text-left text-zinc-500 dark:text-zinc-400">
             <thead class="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-900 dark:text-zinc-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3">
-                        Image
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Title
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Type
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Year
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Favorite
-                    </th>
+                    <th scope="col" class="px-6 py-3">Image</th>
+                    <th scope="col" class="px-6 py-3">Title</th>
+                    <th scope="col" class="px-6 py-3">Type</th>
+                    <th scope="col" class="px-6 py-3">Year</th>
+                    <th scope="col" class="px-6 py-3">Favorite</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let result of results; let i = index" class="bg-white border-b dark:bg-zinc-800 dark:border-zinc-700">
                     <th scope="row" class="px-6 py-4 font-medium text-zinc-900 whitespace-nowrap dark:text-white">
-                        <img src="{{result.Poster}}" alt="{{result.Title}}" class=" w-16">
+                        <img *ngIf="result.Poster !== 'N/A'" src="{{result.Poster}}" alt="{{result.Title}}" class=" w-16">
                     </th>
                     <td class="px-6 py-4">
-                    <p class="text-lg text-zinc-50/90 font-bold">{{result.Title}}</p>
+                        <p class="text-lg text-zinc-50/90 font-bold">{{result.Title}}</p>
                     </td>
                     <td class="px-6 py-4">
                         {{result.Type}}
@@ -35,11 +25,31 @@
                         {{result.Year}}
                     </td>
                     <td class="px-6 py-4">
-                        <span class="material-symbols-rounded filled text-red-500 cursor-pointer" (click)="addToFavs(result)">favorite</span>
+                        <span 
+                        class="material-symbols-rounded text-red-500 cursor-pointer" 
+                        [ngClass]="{'filled' : checkFav(result.imdbID)}" 
+                        (click)="addToFavs(result)">
+                            favorite
+                        </span> 
                     </td>
                 </tr>
                 
             </tbody>
         </table>
+        <div class="pagination my-6 flex flex-row justify-center">
+            <div class="pagination__item flex flex-row justify-center bg-red-500 w-max rounded-xl p-2">
+                <span class="prevous-page mr-4">
+                    <span class="material-symbols-rounded cursor-pointer text-xl" (click)="changePage(page - 1)">chevron_left</span>
+                </span>
+                <div class="pages mr-4 cursor-pointer text-xl" *ngFor="let _page of pages; let i = index">
+                    <span class="page" (click)="changePage(_page)" [ngClass]="{'current font-bold' : i + 1 === page}">
+                        {{_page}}
+                    </span>
+                </div>
+                <span class="next-page" (click)="changePage(page + 1)">
+                    <span class="material-symbols-rounded cursor-pointer text-xl">navigate_next</span>
+                </span>
+            </div>
+        </div>
     </div>
 </div>

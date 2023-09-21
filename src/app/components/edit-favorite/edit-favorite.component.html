@@ -1,0 +1,41 @@
+<div class="main-modal fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster" style="background: rgba(0,0,0,.5);">
+    <div class="modal-container bg-zinc-900 w-8/12 md:max-w-2xl mx-auto rounded-xl z-50 overflow-y-auto md:grid md:grid-cols-2 md:items-center ">
+        <div class="modal-content text-center p-6">
+            <img class="rounded-xl" [ngClass]="{'bg-red-800/50' : favorite.Poster === 'N/A' }" src="{{favorite.Poster !== 'N/A' ? favorite.Poster : '/assets/no-image-preview.webp'}}" alt="">
+        </div>
+        <div class="modal-content text-left p-6 md:pl-0">
+            <div class="flex justify-between items-center pb-3">
+                <p class="text-2xl font-bold text-zinc-200">Edit favorite</p>
+            </div>
+            <div class="flex justify-center">
+                <form method="POST" id="add_caretaker_form" class="w-full">
+                    <div class="">
+                        <h2 class="title text-lg font-bold mb-2">{{favorite.Title}}</h2>
+                        <p class="title">
+                            <span class="font-bold">Year:</span>
+                            {{favorite.Year}}
+                        </p>
+                        <p class="title mb-6">
+                            <span class="font-bold">Type:</span>
+                            {{favorite.Type}}
+                        </p>
+                        <div class="description">
+                            <textarea
+                            [(ngModel)]="description"
+                                name="textarea"
+                                id="textarea"
+                                placeholder="{{!favorite.description ? 'Description...' : favorite.description}}"
+                                class="h-3 p-2 w-full mb-5 rounded-xl bg-zinc-700 min-h-[100px]"
+                            ></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--Footer-->
+            <div class="pt-2">
+                <button class="px-4 bg-gray-200 p-3 rounded-xl text-black hover:bg-gray-300 font-semibold" (click)="handleCancelUpdateFavorite()">Cancel</button>
+                <button class="px-4 bg-red-700 p-3 ml-3 rounded-xl text-white hover:bg-red-800" (click)="handleUpdateFavorite()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
