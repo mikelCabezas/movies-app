@@ -1,40 +1,60 @@
 <app-edit-favorite *ngIf="onEditModal" (updateFavorite)="updateFavorite($event)" (cancelUpdateFavorite)="cancelUpdateFavorite()" [postIndex]="getPostIndex()"/>
-<div *ngIf="currentFavs.length > 0" class="md:px-4 flex flex-row w-full gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto">
+<div class="md:px-4 flex flex-row w-full gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto">
     <div class="px-0 pt-0 pb-2 rounded-xl flex flex-wrap flex-row">
         <div class="flex flex-wrap flex-row">
             <p class="w-full">Types</p>
-            <div *ngFor="let type of types; let i = index" class="toggle-filter--type bg-red-600 p-2 mr-3 rounded-xl w-max cursor-pointer">
-                <div>{{type}}</div>
-            </div>
+            <ul class="flex flex-wrap flex-row">
+                <li *ngFor="let type of types; let i = index" 
+                [ngClass]="{'bg-red-600' : filteredTypeItems.includes(type)}"
+                class="toggle-filter--type border-2 border-red-600 p-2 mr-3 rounded-xl w-max cursor-pointer" 
+                (click)="filterItemByType(type)">
+                    {{type}}
+                </li>
+            </ul>
         </div>
         <div class="flex flex-wrap flex-row">
             <p class="w-full">Years</p>
-            <div *ngFor="let year of years; let i = index" class="toggle-filter--year bg-red-600 p-2 mr-3 rounded-xl w-max cursor-pointer">
-                <div>{{year}}</div>
-            </div>
+            <ul class="flex flex-wrap flex-row">
+                <li *ngFor="let year of years; let i = index" 
+                    [ngClass]="{'bg-red-600' : filteredYearItems.includes(year)}"
+                    class="toggle-filter--year border-2 border-red-600 p-2 mr-3 rounded-xl w-max cursor-pointer" 
+                    (click)="filterItemByYear(year)"
+                >
+                    {{year}}
+                </li>
+            </ul>
         </div>
     </div>
 </div>
-<div *ngIf="currentFavs.length > 0" class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto">
-    <div *ngFor="let favorite of currentFavs; let i = index"  class="max-w-sm bg-zinc-800 px-0 pt-0 pb-2 rounded-xl transform hover:scale-[1.02] transition duration-500">
-        <div class="relative top-card">
-            <span class="material-symbols-rounded absolute top-2 right-2 cursor-pointer" (click)="deleteIndex(i)">delete</span>
-            <span class="material-symbols-rounded absolute top-2 right-9 cursor-pointer" (click)="handleEditFavorite(i)">edit</span>
-            <img class="w-full aspect-[3/4] object-cover rounded-t-lg" [ngClass]="{'bg-red-800/50' : favorite.Poster === 'N/A' }" src="{{favorite.Poster !== 'N/A' ? favorite.Poster : '/assets/no-image-preview.webp'}}" alt="Colors">
-            <p class="absolute top-2 left-2 bg-red-400 text-zinc-100 font-semibold py-1 px-3 rounded-lg">{{favorite.Type}}</p>
-        </div>
-        <div class="content px-4">
-            <h1 class="mt-4 text-zinc-200 text-lg font-bold cursor-pointer">{{favorite.Title}}</h1>
-            <div class="my-1">
-                <!-- <div class="flex space-x-1 items-center">
-                    <p>{{favorite.Type}}</p>
-                </div> -->
-                <div class="flex space-x-1 items-center">
-                    <p>{{favorite.Year}}</p>
+<div *ngIf="results.length > 0" class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto">
+    <ng-container *ngIf="results.length === 0">
+        <p>No results found with this filter</p>
+    </ng-container>
+        <ng-container *ngFor="let favorite of results; let i = index">
+        <ng-container *ngIf="filteredTypeItems.length === 0 || filteredTypeItems.includes(favorite.Type)">
+            
+            <div class="max-w-sm bg-zinc-800 px-0 pt-0 pb-2 rounded-xl transform hover:scale-[1.02] transition duration-500">
+                <div class="relative top-card">
+                    <span class="material-symbols-rounded absolute top-2 right-2 cursor-pointer" (click)="deleteIndex(i)">delete</span>
+                    <span class="material-symbols-rounded absolute top-2 right-9 cursor-pointer" (click)="handleEditFavorite(i)">edit</span>
+                    <img class="w-full aspect-[3/4] object-cover rounded-t-lg" [ngClass]="{'bg-red-800/50' : favorite.Poster === 'N/A' }" src="{{favorite.Poster !== 'N/A' ? favorite.Poster : '/assets/no-image-preview.webp'}}" alt="Colors">
+                    <p class="absolute top-2 left-2 bg-red-400 text-zinc-100 font-semibold py-1 px-3 rounded-lg">{{favorite.Type}}</p>
                 </div>
-                <div *ngIf="favorite.description" class="flex space-x-1 items-center">
-                    <p>{{favorite.description}}</p>
+                <div class="content px-4">
+                    <h1 class="mt-4 text-zinc-200 text-lg font-bold cursor-pointer">{{favorite.Title}}</h1>
+                    <div class="my-1">
+                        <!-- <div class="flex space-x-1 items-center">
+                            <p>{{favorite.Type}}</p>
+                        </div> -->
+                        <div class="flex space-x-1 items-center">
+                            <p>{{favorite.Year}}</p>
+                        </div>
+                        <div *ngIf="favorite.description" class="flex space-x-1 items-center">
+                            <p>{{favorite.description}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </ng-container> 
+    </ng-container>
+    

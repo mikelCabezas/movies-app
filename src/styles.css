@@ -31,3 +31,8 @@ body {
     background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, 0) 16%);
     height: 100%;
 }
+
+li.menu-item,
+li.toggle-filter {
+    @apply border-2 cursor-pointer px-3 py-1.5 rounded-xl transition-all flex flex-row items-center hover:bg-red-600/40
+}

@@ -13,6 +13,7 @@ import { InputSearchComponent } from './components/input-search/input-search.com
 import { FavoritesPageComponent } from './pages/favorites/favorites.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { EditFavoriteComponent } from './components/edit-favorite/edit-favorite.component';
+import { ResultsComponent } from './pages/results/results.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EditFavoriteComponent } from './components/edit-favorite/edit-favorite.
     InputSearchComponent,
     FavoritesComponent,
     FavoritesPageComponent,
-    EditFavoriteComponent
+    EditFavoriteComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,18 @@
-<div class="bg-zinc-800 flex row items-center h-24 p-5 justify-between">
-    <img src="/assets/logo.svg" alt="Favs Movies" class="h-full mr-12">
-    <div class="search-bar w-8/12 mr-10">
-        <app-input-search (querySearch)="handleQuerySearch($event)"/>
+<header class="bg-zinc-800 w-full flex flex-row items-center justify-center">
+    <div class="container h-28 p-5 flex flex-row items-center justify-between">
+        <img src="/assets/logo.svg" alt="Favs Movies" class="h-full mr-12">
+        <nav class="menu mr-12">
+            <ul class="flex flex-row gap-3">
+                <li 
+                class="menu-item {{currentRoute === '/' ? 'current font-bold -tracking-3 border-red-600 hover:bg-red-600/60 ' : 'border-zinc-800 hover:border-red-600/40'}}" 
+                (click)="handleGoToHome()">Home</li>
+                <li 
+                class="menu-item {{currentRoute === '/favorites' ? 'current font-bold -tracking-3 border-red-600 hover:bg-red-600/60 ' : 'border-zinc-800 hover:border-red-600/40'}}" 
+                (click)="handleGoToFavorites()">Favorites <span class="material-symbols-rounded ml-1 text-red-500 cursor-pointer filled">favorite</span> </li>
+            </ul>
+        </nav>
+        <div class="search-bar flex-1 mr-10z">
+            <app-input-search (querySearch)="handleQuerySearch($event)"/>
+        </div>
     </div>
-    <nav class="menu">
-        <ul>
-            <li class="menu-item">Favorites</li>
-        </ul>
-    </nav>
-</div>
+</header>
