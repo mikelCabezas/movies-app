@@ -1,6 +1,8 @@
 # MoviesApp
 
 This project wais a Movies query.
+ [Preview here](https://650d60a71038012bbdd4b5e3--unique-cendol-93a230.netlify.app/)
+
 
 # Instalation
 
