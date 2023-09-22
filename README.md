@@ -4,7 +4,8 @@ This project wais a Movies query.
 
 # Instalation
 
-Download this repo and then, open in woyr text edior. Run in your terminal `ng generate environments` and set `omdb_APIKEY` property with a valid API key from [OMDbApi](https://www.omdbapi.com/) in environment.development.ts and environment.ts.
+Download this repo and then, open in your text edior.
+Run in your terminal `npm i`, then run `ng generate environments` and set `omdb_APIKEY` property with a valid API key from [OMDbApi](https://www.omdbapi.com/) in environment.development.ts and environment.ts.
 
 ## Development server
 
