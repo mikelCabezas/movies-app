@@ -3,7 +3,6 @@
 This project wais a Movies query.
  [Preview here](https://650d60a71038012bbdd4b5e3--unique-cendol-93a230.netlify.app/)
 
-
 # Instalation
 
 Download this repo and then, open in your text edior.
@@ -17,3 +16,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+
+# Technologies used
+
+- Angular
+- Tailwind CSS
