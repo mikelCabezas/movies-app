@@ -15,7 +15,6 @@ export class ResultsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   handleQuery(query: string) {

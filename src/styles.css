@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-    @apply transition-all
+    @apply transition-all px-4
 }
 
 .top-card::before {
@@ -37,4 +37,8 @@ body {
 li.menu-item,
 li.toggle-filter {
     @apply border-2 cursor-pointer px-3 py-1.5 rounded-xl transition-all flex flex-row items-center hover:bg-red-600/40
+}
+
+nav {
+    @apply bg-zinc-900/90 md:bg-transparent md:bg-none w-3/5 p-4 pt-16 md:pt-0 md:p-0 fixed md:relative flex flex-col md:flex-row mr-2 md:mr-12 h-screen md:h-auto top-0 transition-all md:top-auto md:left-auto md:w-auto z-10 md:z-auto
 }

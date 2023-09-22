@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/models/movies';
 import { Filter } from 'src/app/models/filter';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.css']
 })
 export class FavoritesComponent implements OnInit {
+  constructor(private router: Router) { }
+
   postIndex = 0
   onEditModal = false
 
@@ -57,13 +60,20 @@ export class FavoritesComponent implements OnInit {
   deleteIndex(index: number) {
     this.currentFavs.splice(index, 1);
     localStorage.setItem('favs', JSON.stringify(this.currentFavs));
-  }
 
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/favorites']);
+    });
+  }
   updateFavorite(favorite: any) {
     this.currentFavs[this.postIndex] = favorite
     localStorage.setItem('favs', JSON.stringify(this.currentFavs));
     this.onEditModal = false
     this.postIndex = 0
+
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/favorites']);
+    });
   }
 
   cancelUpdateFavorite() {
@@ -92,7 +102,6 @@ export class FavoritesComponent implements OnInit {
     this.filteredYearItems.length === 0 ? this.filterActive.Year = false : this.filterActive.Year = true
     this.getMovies()
   }
-
   getMovies() {
     this.results = []
     for (let favorite of this.currentFavs) {

@@ -15,7 +15,6 @@ export class SearchResultsComponent implements OnInit, OnChanges {
     private router: Router
   ) { }
 
-  // query = ''
   currentPage = 1
   pages: number[] = []
   results: Movie[] = []
@@ -58,14 +57,9 @@ export class SearchResultsComponent implements OnInit, OnChanges {
       }
     })
   }
-
   checkFav(id: any) {
     return this.currentFavs.some(movie => movie.imdbID === id)
   }
-
-  // checkFavs() {
-  //   return this.currentFavs.some(movie => movie.imdbID === 'id')
-  // }
 
   changePage(_page: number) {
     this.currentPage = _page
@@ -90,7 +84,6 @@ export class SearchResultsComponent implements OnInit, OnChanges {
       .then(() => {
         this.router.navigate([url])
       })
-
   }
   searchMovies() {
     this.moviesService.getMovies(this.query, this.currentPage).subscribe(data => {

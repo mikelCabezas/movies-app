@@ -1,9 +1,9 @@
 <app-edit-favorite *ngIf="onEditModal" (updateFavorite)="updateFavorite($event)" (cancelUpdateFavorite)="cancelUpdateFavorite()" [postIndex]="getPostIndex()"/>
-<div class="md:px-4 flex flex-row w-full gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto  ">
+<div class="md:px-4 flex flex-row w-full gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto w-full overflow-scroll ">
     <div class="px-0 pt-0 pb-2 rounded-xl flex  flex-row">
         <div class="flex flex-wrap flex-row">
             <p class="w-full font-bold mb-2">Types</p>
-            <ul class="flex flex-wrap flex-row">
+            <ul class="flex flex-nowrap md:flex-wrap flex-row overflow-scroll">
                 <li *ngFor="let type of types; let i = index" 
                 [ngClass]="{'bg-red-600' : filteredTypeItems.includes(type)}"
                 class="toggle-filter--type border-2 border-red-600 p-2 mr-3 rounded-xl w-max cursor-pointer" 
@@ -14,7 +14,7 @@
         </div>
         <div class="flex flex-wrap flex-row">
             <p class="w-full font-bold mb-2">Years</p>
-            <ul class="flex flex-wrap flex-row">
+            <ul class="flex flex-nowrap md:flex-wrap flex-row overflow-scroll">
                 <li *ngFor="let year of years; let i = index" 
                     [ngClass]="{'bg-red-600' : filteredYearItems.includes(year)}"
                     class="toggle-filter--year border-2 border-red-600 p-2 mr-3 rounded-xl w-max cursor-pointer" 
@@ -30,11 +30,8 @@
     <h2 class="text-xl text-x">No results found with this filter</h2>
 </div>
 <div *ngIf="results.length > 0" class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto">
-
-
-        <ng-container *ngFor="let favorite of results; let i = index">
+    <ng-container *ngFor="let favorite of results; let i = index">
         <ng-container *ngIf="filteredTypeItems.length === 0 || filteredTypeItems.includes(favorite.Type)">
-            
             <div class="max-w-sm bg-zinc-800 px-0 pt-0 pb-2 rounded-xl transform hover:scale-[1.02] transition duration-500">
                 <div class="relative top-card">
                     <span class="material-symbols-rounded absolute top-2 right-2 cursor-pointer" (click)="deleteIndex(i)">delete</span>
@@ -45,9 +42,6 @@
                 <div class="content px-4">
                     <h1 class="mt-4 text-zinc-200 text-lg font-bold cursor-pointer">{{favorite.Title}}</h1>
                     <div class="my-1">
-                        <!-- <div class="flex space-x-1 items-center">
-                            <p>{{favorite.Type}}</p>
-                        </div> -->
                         <div class="flex space-x-1 items-center">
                             <p>{{favorite.Year}}</p>
                         </div>
@@ -59,4 +53,6 @@
             </div>
         </ng-container> 
     </ng-container>
+</div>
+
     

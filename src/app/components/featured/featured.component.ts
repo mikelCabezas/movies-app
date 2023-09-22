@@ -77,10 +77,10 @@ export class FeaturedComponent implements OnInit {
     localStorage.setItem('favs', JSON.stringify(updateFavs));
 
     const url: string = this.router.url;
-    this.router.navigateByUrl('/toggle', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate([url])
-      })
+
+    this.router.navigateByUrl('/favorites', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/']);
+    });
   }
   checkFav(id: any) {
     return this.currentFavs.some(movie => movie.imdbID === id)

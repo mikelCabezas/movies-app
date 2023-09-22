@@ -1,17 +1,20 @@
 <header class="bg-zinc-800 w-full flex flex-row items-center justify-center">
-    <div class="container h-28 p-5 flex flex-row items-center justify-between">
-        <img (click)="handleGoToHome()" src="/assets/logo.svg" alt="Favs Movies" class="h-full mr-12 cursor-pointer">
-        <nav class="menu mr-12">
-            <ul class="flex flex-row gap-3">
+    <div class="container md:h-28 p-5 flex flex-row flex-wrap items-center justify-between">
+        <img (click)="handleGoToHome()" src="/assets/logo.svg" alt="Favs Movies" class="h-full w-20 mr-12 cursor-pointer">
+        
+        <nav class="menu bg-zinc-900/90 md:bg-transparent md:bg-none w-3/5 p-4 pt-16 md:pt-0  md:p-0 fixed md:relative flex flex-col md:flex-row mr-2 md:mr-12 h-screen md:h-auto top-0 transition-all {{menuOpen ? 'left-0' : '-left-3/4'}} md:top-auto md:left-auto md:w-auto z-10 md:z-auto">
+            <div class="material-symbols-rounded block md:hidden text-4xl ml-4 absolute right-4 top-4" (click)="toggleMenu()">close</div>
+            <ul class="flex flex-col md:flex-row gap-3 mb-6 md:mb-0">
                 <li 
-                class="menu-item {{currentRoute === '/' ? 'current font-bold -tracking-3 border-red-600 hover:bg-red-600/60 ' : 'border-zinc-800 hover:border-red-600/40'}}" 
+                class="menu-item {{currentRoute === '/' ? 'current font-bold -tracking-3 border-red-600 hover:bg-red-600/60 ' : 'border-transparent md:border-zinc-800 hover:border-red-600/40'}}" 
                 (click)="handleGoToHome()">Home</li>
                 <li 
-                class="menu-item {{currentRoute === '/favorites' ? 'current font-bold -tracking-3 border-red-600 hover:bg-red-600/60 ' : 'border-zinc-800 hover:border-red-600/40'}}" 
-                (click)="handleGoToFavorites()">Favorites <span class="material-symbols-rounded ml-1 text-red-500 cursor-pointer filled">favorite</span> </li>
+                class="menu-item {{currentRoute === '/favorites' ? 'current font-bold -tracking-3 border-red-600 hover:bg-red-600/60 ' : 'border-transparent md:border-zinc-800 hover:border-red-600/40'}}" 
+                (click)="handleGoToFavorites()">Favorites <span class="material-symbols-rounded ml-1 text-red-500 cursor-pointer filled hidden md:block">favorite</span> </li>
             </ul>
         </nav>
-        <div class="search-bar flex-1 mr-10z">
+        <div (click)="toggleMenu()" class="material-symbols-rounded block md:hidden text-4xl ml-4">menu</div>
+        <div class="search-bar flex-1 mt-4 md:mt-0  basis-full md:basis-0">
             <app-input-search/>
         </div>
     </div>

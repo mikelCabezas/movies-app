@@ -1,7 +1,6 @@
-
 <div class=" flex flex-col justify-center">
     <h2 class="text-4xl text-center font-bold mt-6">Best series</h2>
-    <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto justify-center w-3/4">
+    <div class="md:px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto justify-center w-full md:w-3/4">
         <div class="w-full"  *ngFor="let movie of bestSeries; let i = index">
             <div class="max-w-sm bg-zinc-800 px-0 pt-0 pb-2 rounded-xl transform hover:scale-[1.02] transition duration-500">
                 <div class="relative top-card">
@@ -18,9 +17,6 @@
                 <div class="content px-4">
                     <h1 class="mt-4 text-zinc-200 text-lg font-bold cursor-pointer">{{movie.Title}}</h1>
                     <div class="my-1">
-                        <!-- <div class="flex space-x-1 items-center">
-                            <p>{{movie.Type}}</p>
-                        </div> -->
                         <div class="flex space-x-1 items-center">
                             <p>{{movie.Year}}</p>
                         </div>
@@ -34,10 +30,9 @@
     </div>
 </div>
 
-
 <div class=" flex flex-col justify-center">
     <h2 class="text-4xl text-center font-bold mt-6">Most viewed</h2>
-    <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto justify-center w-3/4">
+    <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 space-y-4 md:space-y-0 mt-4 container mx-auto justify-center w-full md:w-3/4">
         <div class="w-full" *ngFor="let movie of mostWatched; let i = index">
             <div class="max-w-sm bg-zinc-800 px-0 pt-0 pb-2 rounded-xl transform hover:scale-[1.02] transition duration-500">
                 <div class="relative top-card">
@@ -53,9 +48,6 @@
                 <div class="content px-4">
                     <h1 class="mt-4 text-zinc-200 text-lg font-bold cursor-pointer">{{movie.Title}}</h1>
                     <div class="my-1">
-                        <!-- <div class="flex space-x-1 items-center">
-                            <p>{{movie.Type}}</p>
-                        </div> -->
                         <div class="flex space-x-1 items-center">
                             <p>{{movie.Year}}</p>
                         </div>
